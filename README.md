@@ -1,4 +1,4 @@
-# GEAR: `<u>`G`</u>`enerative L`<u>`e`</u>`gal C`<u>`a`</u>`se `<u>`R`</u>`etrieval
+# GEAR: <u>G</u>enerative L <u>e</u>gal C<u>ase <u>R</u>etrieval
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Background
 
-The implementation code of GEAR (`<u>`G`</u>`enerative L`<u>`e`</u>`gal C`<u>`a`</u>`se `<u>`R`</u>`etrieval).
+The implementation code of GEAR (<u>G</u>enerative L<u>e</u>gal C<u>a</u>se <u>R</u>etrieval).
 
 ## Getting Started
 
