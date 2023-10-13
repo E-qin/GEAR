@@ -1,4 +1,4 @@
-# GEAR: <u>G</u>enerative L <u>e</u>gal C<u>ase <u>R</u>etrieval
+# GEAR: Incorporating Judgment Prediction into Legal Case Retrieval via Law-aware Generative Retrieval
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Background
 
-The implementation code of GEAR (<u>G</u>enerative L<u>e</u>gal C<u>a</u>se <u>R</u>etrieval).
+The implementation of GEAR (**G**enerative L**e**gal C**a**se **R**etrieval).
 
 ## Getting Started
 
@@ -43,11 +43,11 @@ GEAR
 │   │   ├── ELAM_key_src                # Key source folder of ELAM including text, labels, 
 │   │   │                               #     charge information, and other relevant data
 │   │   │				#     sources for query and precedent cases.
-│   │   └── QGen                        # Sentence-level score files for rationale extraction
+│   │   └── QGen                        # Sentence-level score files for rationale extraction.
 │   └── LeCaRD_version2
 │       ├── LeCaRD_version2_key_src     # ...
 │       └── QGen                        # ...
 └── law
-    ├── Criminal Law.txt                # Criminal Law of the People's Republic of China
+    ├── Criminal Law.txt                # Criminal Law of the People's Republic of China.
     ...
 ```
