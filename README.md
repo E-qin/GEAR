@@ -7,7 +7,9 @@
 ## Overview
 
 * [Background](#background)
-* [Getting Started](#getting-started)
+
+- [Getting Started](#getting-started)
+
 * [Dataset Structure](#dataset-structure)
 
 ## Background
