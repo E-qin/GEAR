@@ -1,4 +1,4 @@
-# GEAR: Incorporating Judgment Prediction into Legal Case Retrieval via Law-aware Generative Retrieval
+# Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach
 
 ---
 
@@ -14,7 +14,7 @@
 
 ## Background
 
-The implementation of GEAR (**G**enerative L**e**gal C**a**se **R**etrieval).
+The implementation of SIGIR 2024 papar (Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach).
 
 ## Getting Started
 
