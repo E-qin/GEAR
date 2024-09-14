@@ -1,4 +1,4 @@
-# Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach
+# [SIGIR '24]Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach
 
 ---
 
@@ -14,7 +14,7 @@
 
 ## Background
 
-The implementation of SIGIR 2024 papar (Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach).
+The implementation of SIGIR'24 papar ([Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach](https://dl.acm.org/doi/10.1145/3626772.3657717)).
 
 ## Getting Started
 
@@ -52,4 +52,27 @@ GEAR
 └── law
     ├── Criminal Law.txt                # Criminal Law of the People's Republic of China.
     ...
+```
+
+## Ref
+
+If you find our work useful, please do not save your star and cite our work:
+
+```
+@inproceedings{Qin2024Explicitly,
+author = {Qin, Weicong and Cao, Zelin and Yu, Weijie and Si, Zihua and Chen, Sirui and Xu, Jun},
+title = {Explicitly Integrating Judgment Prediction with Legal Document Retrieval: A Law-Guided Generative Approach},
+year = {2024},
+isbn = {9798400704314},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3626772.3657717},
+doi = {10.1145/3626772.3657717},
+booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {2210–2220},
+numpages = {11},
+keywords = {generative retrieval, legal document retrieval, legal judgment prediction},
+location = {Washington DC, USA},
+series = {SIGIR '24}
+}
 ```
