@@ -1,0 +1,145 @@
+{
+    "name": "T5",
+    "n_gpu": 1,
+    "arch": {
+        "type": "T5",
+        "args": {}
+    },
+    
+
+    "LeCaRD_version2_data_prepare":{
+        "QGen_mode":"lac",
+        "original_order":false,
+
+        "crime1_words_path":"law/crime_goldenWords.json",
+        "words1_QGen":true,
+        "words1_QGen_k":10,
+
+        "crime2_words_path":"law/crime_detailWords_dict_jieba.json",
+        "words2_QGen":true,
+        "words2_QGen_k":20,
+
+        "total_crimes_path":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/total_crimes.json",
+        "charges_path":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/pid_charges.json",
+
+        "sentences_path":{
+            "p":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/pid_sentences.json",
+            "q":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/qid_sentences.json"
+        },
+
+        "QGen_scores_path":{ 
+            "jieba":{
+                "p":"dataset/LeCaRD_version2/QGen/pid_QGenScore_seg_dict_jieba.json",
+                "q":"dataset/LeCaRD_version2/QGen/qid_QGenScore_seg_dict_jieba.json"
+            },
+            "lac":{
+                "p":"dataset/LeCaRD_version2/QGen/pid_QGenScore_seg_dict_lac.json",
+                "q":"dataset/LeCaRD_version2/QGen/qid_QGenScore_seg_dict_lac.json"
+            }
+        },
+        "QGen_results_dir":"dataset/LeCaRD_version2/QGen_results",
+        
+        "test_set_path":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/test_qids.json",
+        "labels_path":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/labels.json",
+        "labels_size":30,
+    
+        "atomicIds_path":{
+            "p":"dataset/LeCaRD_version2/LeCaRD_version2_key_src/pids.json"
+        },
+        "docid_paths":{
+            "decode_tree":{
+                "toSeq":"Seq_ids/LeCaRD_version2/decode_tree/2New.json",
+                "toAto":"Seq_ids/LeCaRD_version2/decode_tree/2Old.json",
+                "decode_tree":"Seq_ids/LeCaRD_version2/decode_tree/tree.pickle"
+            }
+        },
+        "docid_ty":"decode_tree"    
+    },
+
+    "join":true,
+    "LeCaRD_version2_data_loaders":{
+        "batch_size":40,
+        "join_batch_size":2,
+        "shuffle": true,
+        "num_workers": 1,
+        "max_input_len": 512,
+        "max_output_len": 6
+    },
+    
+    "LeCaRD_version2_output":{
+        "metrics_dir":"ex/metrics/LeCaRD_version2",
+        "results_dir":"ex/results/LeCaRD_version2"
+    },
+    "indexing":true,
+    "indexing_times":2,
+    "LM_loss_only":true,
+    "join_epoch":1,
+    "loss_speed_up":false,
+    "loss_setup":{
+        "bs_top_n":10,
+        "label_top_n":10,
+        "weight_arrange":[],
+        "rl_lambda":1e-3,
+        "expert_lambda":1e-1
+    },
+    "cost_lambda":0.001,
+
+    "log_step":4,
+    "data_dbg":true,
+    "model_dbg":false,
+    
+    
+    "constrained_bs":true,
+    "generate_setup":{
+        "generate_grad":0,
+        "num_beams":30,
+        "prefix_allowed_tokens_fn is INT_TOKEN_IDS":false,
+        "top_p":1.0,
+        "top_k":0,
+        "do_sample":false,
+        "early_stopping":true
+    },
+    "accumulate_steps": 2,
+    "gradient_ckpt": true,
+
+    "accelerate": true,
+    "accelerator.accumulate": true,
+    
+    "model_path":"../pretrain_models/Randeng-T5-77M-MultiTask-Chinese",
+    "max_len":512,
+    
+
+    "optimizer": {
+        "type": "Adam",
+        "args":{
+            "lr": 1e-4,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "loss": "cross_entropy",
+    "metrics": [
+        "recall_at_1","recall_at_5","recall_at_10","recall_at_20","recall_at_30",
+        "MRR_mls"
+    ],
+    "key_metrics": [
+        "recall_at_20"
+    ],
+
+    "lr_scheduler": {
+        "type": "StepLR",
+        "args": {
+            "step_size": 15,
+            "gamma": 0.98
+        }
+    },
+    "trainer": {
+        "epochs": 500,
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss",
+        "early_stop": 10,
+        "tensorboard": true
+    }
+}
