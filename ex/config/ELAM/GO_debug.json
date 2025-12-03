@@ -1,0 +1,148 @@
+{
+    "name": "T5",
+    "n_gpu": 1,
+    "arch": {
+        "type": "T5",
+        "args": {}
+    },
+    
+
+    "ELAM_data_prepare":{
+        "QGen_mode":"jieba",
+        "original_order":false,
+
+        "crime1_words_path":"law/crime_goldenWords.json",
+        "words1_QGen":true,
+        "words1_QGen_k":10,
+
+        "crime2_words_path":"law/crime_detailWords_dict_jieba.json",
+        "words2_QGen":true,
+        "words2_QGen_k":20,
+
+        "total_crimes_path":"dataset/ELAM/ELAM_key_src/total_crimes.json",
+        "charges_path":"dataset/ELAM/ELAM_key_src/pid_charges.json",
+
+
+        "sentences_path":"dataset/ELAM/ELAM_key_src/atomicId_sentences_dict_noh.json",
+        "title_path":"dataset/ELAM/ELAM_key_src/atomicId_title_dict.json",
+        "QGen_scores_path":{
+            "jieba":"dataset/ELAM/QGen/atomicId_QGenScore_seg_dict_jieba.json",
+            "lac":"dataset/ELAM/QGen/atomicId_QGenScore_seg_dict_lac.json"
+        },
+        
+        "test_set_path":"dataset/ELAM/ELAM_key_src/test_set.json",
+
+        "labels_ty":{
+            "golden":0,
+            "extensive":1
+        },
+        "labels_path":"dataset/ELAM/ELAM_key_src/atomicId_labels_dict.json",
+        "extensive_labels_path":"dataset/ELAM/ELAM_key_src/atomicId_labels_2&1_dict.json",
+        "labels_size":10,
+
+    
+        "atomicIds_path":"dataset/ELAM/ELAM_key_src/atomicIds.json",
+        "docid_paths":{
+            "decode_tree":{
+                "toSeq":"Seq_ids/ELAM/decode_tree/2New.json",
+                "decode_tree":"Seq_ids/ELAM/decode_tree/tree.pickle",
+                "toAto":""
+            }
+        },
+        "docid_ty":"decode_tree",
+        "id_internal_separator":"",
+        "pad_0":true,
+        "get rid of the same prefix part":false,
+
+        "data_coefficient":{
+            "ownTxt_to_ownDocId":1,
+            "relevantTxt_to_ownDocId":1
+        }
+    },
+
+    "ELAM_data_loaders":{
+        "batch_size":2,
+        "shuffle": true,
+        "num_workers": 0,
+        "train_test_jc": "00",
+        "max_input_len": 512,
+        "max_output_len": 6,
+        "do_pad_labels_lists": 0
+    },
+    
+    "ELAM_output":{
+        "metrics_dir":"ex/metrics/ELAM",
+        "results_dir":"ex/results/ELAM"
+    },
+
+    "LM_loss_only":false,
+    "loss_setup":{
+        "bs_top_n":10,
+        "label_top_n":10,
+        "weight_arrange":[],
+        "rl_lambda":1e-4,
+        "expert_lambda":1e-3
+    },
+
+    "cost_lambda":0.01,
+
+    "data_dbg":true,
+    "model_dbg":false,
+    
+    "accumulate_steps": 1,
+    "gradient_ckpt": false,
+    
+    "constrained_bs":true,
+
+    "generate_setup":{
+        "generate_grad":0,
+        "num_beams":30,
+        "prefix_allowed_tokens_fn is INT_TOKEN_IDS":false,
+        "top_p":1.0,
+        "top_k":0,
+        "do_sample":false,
+        "early_stopping":true
+    },
+
+    "accelerate": true,
+    "accelerator.accumulate": true,
+    
+    "model_path":"../pretrain_models/Randeng-T5-77M-MultiTask-Chinese",
+    "max_len":512,
+    
+
+    "optimizer": {
+        "type": "Adam",
+        "args":{
+            "lr": 1e-4,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "loss": "cross_entropy",
+    "metrics": [
+        "recall_at_1","recall_at_5","recall_at_10","recall_at_20","recall_at_30",
+        "MRR_mls"
+    ],
+    "key_metrics": [
+        "recall_at_20"
+    ],
+
+    "lr_scheduler": {
+        "type": "StepLR",
+        "args": {
+            "step_size": 5,
+            "gamma": 0.99
+        }
+    },
+    "trainer": {
+        "epochs": 500,
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss",
+        "early_stop": 10,
+        "tensorboard": true
+    }
+
+}
