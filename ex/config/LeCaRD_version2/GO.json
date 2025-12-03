@@ -85,7 +85,7 @@
     "cost_lambda":0.001,
 
     "log_step":4,
-    "data_dbg":true,
+    "data_dbg":false,
     "model_dbg":false,
     
     
