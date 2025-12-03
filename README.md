@@ -4,6 +4,8 @@
 
 ![GitHub](https://img.shields.io/github/license/myx666/LeCaRD) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/numpy)
 
+> Some users reported that the reproduction results are all zeros. Please check if data_dbg in the config's JSON file is set to true. If so, it will only use a few samples for training and testing.
+
 ## Overview
 
 * [Background](#background)
@@ -75,4 +77,5 @@ keywords = {generative retrieval, legal document retrieval, legal judgment predi
 location = {Washington DC, USA},
 series = {SIGIR '24}
 }
+
 ```
